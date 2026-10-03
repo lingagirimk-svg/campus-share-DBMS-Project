@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CampusShare</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>CampusShare</h1>
+    <p>Smart Campus Resource Management & Booking</p>
+  </div>
+  <button onclick="loadAll()">Refresh Data</button>
+</header>
+
+<main>
+<section class="cards" id="cards"></section>
+
+<section class="panel">
+  <div class="panel-head">
+    <h2>Campus Resources</h2>
+    <input id="search" placeholder="Search resource, category or location..." oninput="loadResources()">
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ID</th><th>Resource</th><th>Category</th><th>Location</th><th>Condition</th><th>Status</th><th>Bookings</th></tr></thead>
+      <tbody id="resourceRows"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="grid">
+  <div class="panel">
+    <h2>New Booking</h2>
+    <form id="bookingForm">
+      <input name="userId" type="number" value="1" placeholder="Student ID" required>
+      <input name="resourceId" type="number" placeholder="Resource ID" required>
+      <input name="bookingDate" type="date" required>
+      <div class="two"><input name="startTime" type="time" required><input name="endTime" type="time" required></div>
+      <button>Book Resource</button>
+    </form>
+    <p id="bookingMsg" class="msg"></p>
+  </div>
+
+  <div class="panel">
+    <h2>Borrow Resource</h2>
+    <form id="borrowForm">
+      <input name="userId" type="number" value="1" placeholder="Student ID" required>
+      <input name="resourceId" type="number" placeholder="Resource ID" required>
+      <input name="dueDate" type="date" required>
+      <button>Issue Resource</button>
+    </form>
+    <p id="borrowMsg" class="msg"></p>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Recent Bookings</h2>
+  <div class="table-wrap">
+    <table><thead><tr><th>ID</th><th>Student</th><th>Resource</th><th>Date</th><th>Time</th><th>Status</th></tr></thead>
+    <tbody id="bookingRows"></tbody></table>
+  </div>
+</section>
+
+<section class="grid">
+  <div class="panel">
+    <h2>Borrow / Return</h2>
+    <div class="table-wrap">
+      <table><thead><tr><th>ID</th><th>Student</th><th>Resource</th><th>Issued</th><th>Due</th><th>Returned</th><th>Action</th></tr></thead>
+      <tbody id="borrowRows"></tbody></table>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>Maintenance</h2>
+    <div class="table-wrap">
+      <table><thead><tr><th>Resource</th><th>Problem</th><th>Date</th><th>Status</th></tr></thead>
+      <tbody id="maintenanceRows"></tbody></table>
+    </div>
+  </div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
